@@ -10,7 +10,7 @@ Summary(pl):	vocal - otwarta biblioteka dla aplikacji komunikacyjnych
 Name:		vocal
 Version:	1.5.0
 Release:	0.3
-License:	BSD-like ?
+License:	BSD-like (?)
 Group:		Networking
 Source0:	http://www.vovida.org/downloads/vocal/%{version}/%{name}-%{version}.tar.gz
 # Source0-md5:	808e4866da0ed262621dd211f8f86a74
