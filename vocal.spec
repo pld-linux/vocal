@@ -9,7 +9,7 @@ Summary:	vocal
 Summary(pl):	vocal
 Name:		vocal
 Version:	1.5.0
-Release:	0.1
+Release:	0.3
 License:	BSD-like (? please check)
 Group:		Libraries
 Source0:	http://www.vovida.org/downloads/%{name}/%{version}/rh73/%{name}bin-%{version}-20.i386.rpm
@@ -60,15 +60,26 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_sbindir}/*
 %attr(755,root,root) %{_bindir}/*
 %{vocaldir}/Tone/*
-%{vocaldir}/allinoneconfigure/*
+%attr(755,root,root) %{vocaldir}/allinoneconfigure/allinoneconfigure
+%attr(755,root,root) %{vocaldir}/allinoneconfigure/*.pl
+%{vocaldir}/allinoneconfigure/*.dtd
+%{vocaldir}/allinoneconfigure/*.xml
+%{vocaldir}/allinoneconfigure/*.sed
+%{vocaldir}/allinoneconfigure/*.conf
 %{vocaldir}/voicemail/*
 %{vocaldir}/webpages/*
+%{vocaldir}/provisioning/xml/*.xml
+%{vocaldir}/manageusers
+%{vocaldir}/verifysip
+%{vocaldir}/vocalctl
+%{vocaldir}/vocald
 %dir /etc/vocal
 %dir %{vocaldir}
 %dir %{vocaldir}/Tone
 %dir %{vocaldir}/allinoneconfigure
 %dir %{vocaldir}/etc
 %dir %{vocaldir}/provisioning
+%dir %{vocaldir}/provisioning/xml
 %dir %{vocaldir}/voicemail
 %dir %{vocaldir}/webpages
 %{vocaldir}/*.cfg
