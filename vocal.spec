@@ -85,7 +85,9 @@ Statyczna wersja biblioteki Vocal.
 # Basic H.323 Gatekeeper
 #%{__make} vocal_gk
 
-%{__make} LDLIBS_LAST="-L%{_libdir}"
+# This makes better package:
+#%{__make} CODE_OPTIMIZE=1 LDLIBS_LAST="-L%{_libdir}" all
+%{__make} LDLIBS_LAST="-L%{_libdir}" all
 
 %install
 rm -rf $RPM_BUILD_ROOT
