@@ -6,7 +6,7 @@ Summary:	vocal - Vovida Open Communication Application Library
 Summary(pl):	vocal - otwarta biblioteka dla aplikacji komunikacyjnych
 Name:		vocal
 Version:	1.5.0
-Release:	0.1
+Release:	0.2
 License:	?
 Group:		Libraries
 Source0:	http://www.vovida.org/downloads/vocal/%{version}/%{name}-%{version}.tar.gz
@@ -15,6 +15,7 @@ BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	libstdc++-devel
 BuildRequires:	libtool
+BuildRequires:	libxml-devel
 BuildRequires:	libxml2-devel
 BuildRequires:	openh323-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -69,11 +70,12 @@ Statyczna wersja biblioteki Vocal.
 %{__autoconf}
 #%{__automake}
 %configure \
-#	--%{?debug:en}%{!?debug:dis}able-debug
+	--%{?debug:en}%{!?debug:dis}able-debug \
+	--with-system-libs \
+	--with-openssl
 
 # ok, but it does not build: :(
 #	--with-shared-libs \
-#	--with-system-libs \
 
 # We are making this f****ng huge pig step by step
 # 'make usage' to show what is possible
@@ -87,7 +89,7 @@ Statyczna wersja biblioteki Vocal.
 
 # This makes better package:
 #%{__make} CODE_OPTIMIZE=1 LDLIBS_LAST="-L%{_libdir}" all
-%{__make} LDLIBS_LAST="-L%{_libdir}" all
+%{__make} LDLIBS_LAST="-L%{_libdir} -L/usr/X11R6/lib -lxml" all
 
 %install
 rm -rf $RPM_BUILD_ROOT
