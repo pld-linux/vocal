@@ -1,7 +1,4 @@
 # TODO:
-# - to be removed while building:
-#	- libxml2
-#	- a lot of stupid things...
 Summary:	vocal
 Summary(pl):	vocal
 Name:		vocal
@@ -9,14 +6,9 @@ Version:	1.5.0
 Release:	0.1
 License:	?
 Group:		Libraries
-Source0:	http://www.vovida.org/downloads/vocal/%{version}/%{name}-%{version}.tar.gz
+Source0:	http://www.vovida.org/downloads/%{name}/%{version}/rh73/%{name}bin-%{version}-20.i386.rpm
 URL:		http://www.vovida.org/
-BuildRequires:	autoconf
-BuildRequires:	automake
-BuildRequires:	libtool
-BuildRequires:	libstdc++-devel
-BuildRequires:	libxml2-devel
-BuildRequires:	openh323-devel
+ExclusiveArch:	%{ix86}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -27,7 +19,6 @@ and tools needed to build new and exciting VoIP features, applications
 and services. The software in VOCAL includes a SIP based Redirect
 Server, Feature Server, Provisioning Server and Marshal Proxy. This is
 the stable development branch of the VOCAL
-
 
 %package devel
 Summary:	Vocal development files
@@ -54,30 +45,8 @@ Vocal - static version.
 Statyczna wersja Vocal.
 
 %prep
-%setup -q -n %{name}
-
-%build
-%{__aclocal}
-%{__autoconf}
-#%{__automake}
-%configure \
-#	--%{?debug:en}%{!?debug:dis}able-debug
-
-# ok, but it does not build: :(
-#	--with-shared-libs \
-#	--with-system-libs \
-
-# We are making this f****ng huge pig step by step
-# 'make usage' to show what is possible
-
-# SIP-H.323 Call Signaling Gateway
-#%{__make} siph323csgw
-# Provisioning Server
-#%{__make} ps
-# Basic H.323 Gatekeeper
-#%{__make} vocal_gk
-
-%{__make} LDLIBS_LAST="-L%{_libdir}"
+%setup -q -c -T
+rpm2cpio %{SOURCE0} | cpio -i -d
 
 %install
 rm -rf $RPM_BUILD_ROOT
