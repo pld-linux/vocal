@@ -13,6 +13,7 @@ Release:	0.3
 License:	BSD-like ?
 Group:		Networking
 Source0:	http://www.vovida.org/downloads/vocal/%{version}/%{name}-%{version}.tar.gz
+# Source0-md5:	808e4866da0ed262621dd211f8f86a74
 URL:		http://www.vovida.org/
 BuildRequires:	autoconf
 BuildRequires:	automake
