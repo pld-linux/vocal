@@ -1,18 +1,21 @@
 # TODO:
 # - to be removed while building:
+#	- libxml
 #	- libxml2
+#	- libsndfile
 #	- a lot of stupid things...
 Summary:	vocal - Vovida Open Communication Application Library
 Summary(pl):	vocal - otwarta biblioteka dla aplikacji komunikacyjnych
 Name:		vocal
 Version:	1.5.0
-Release:	0.2
+Release:	0.3
 License:	?
 Group:		Libraries
 Source0:	http://www.vovida.org/downloads/vocal/%{version}/%{name}-%{version}.tar.gz
 URL:		http://www.vovida.org/
 BuildRequires:	autoconf
 BuildRequires:	automake
+BuildRequires:	libsndfile-devel
 BuildRequires:	libstdc++-devel
 BuildRequires:	libstdc++-static
 BuildRequires:	libtool
@@ -90,7 +93,7 @@ Statyczna wersja biblioteki Vocal.
 
 # This makes better package:
 #%{__make} CODE_OPTIMIZE=1 LDLIBS_LAST="-L%{_libdir}" all
-%{__make} CODE_OPTIMIZE=1 LDLIBS_LAST="-L%{_libdir} -L/usr/X11R6/lib" all
+%{__make} CODE_OPTIMIZE=1 LDLIBS_LAST="-L%{_libdir} -L/usr/X11R6/lib -lxml -lsndfile" all
 
 %install
 rm -rf $RPM_BUILD_ROOT
