@@ -24,7 +24,7 @@ BuildRequires:	libtool
 BuildRequires:	libxml-devel
 BuildRequires:	libxml2-devel
 BuildRequires:	openh323-devel
-BuildRequires:	openssl-devel
+BuildRequires:	openssl-devel >= 0.9.7d
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
