@@ -1,15 +1,23 @@
 # TODO:
+#  - make it from sources!!
+#  - make separate packages:
+#	- webpages
+#	- gua
+#	- voicemail...
+#  - move some human-friendly place...
 Summary:	vocal
 Summary(pl):	vocal
 Name:		vocal
 Version:	1.5.0
 Release:	0.1
-License:	?
+License:	BSD-like (? please check)
 Group:		Libraries
 Source0:	http://www.vovida.org/downloads/%{name}/%{version}/rh73/%{name}bin-%{version}-20.i386.rpm
 URL:		http://www.vovida.org/
 ExclusiveArch:	%{ix86}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
+
+%define		vocaldir	/usr/local/vocal
 
 %description
 The Vovida Open Communication Application Library (VOCAL) is an open
@@ -20,57 +28,50 @@ and services. The software in VOCAL includes a SIP based Redirect
 Server, Feature Server, Provisioning Server and Marshal Proxy. This is
 the stable development branch of the VOCAL
 
-%package devel
-Summary:	Vocal development files
-Summary(pl):	Pliki dla programistów u¿ywaj±cych Vocal
-Group:		Development/Libraries
-Requires:	%{name} = %{version}
-
-%description devel
-Vocal development files.
-
-%description devel -l pl
-Pliki dla programistów u¿ywaj±cych Vocal.
-
-%package static
-Summary:	Vocal - static version
-Summary(pl):	Statyczna wersja Vocal
-Group:		Development/Libraries
-Requires:	%{name}-devel = %{version}
-
-%description static
-Vocal - static version.
-
-%description static -l pl
-Statyczna wersja Vocal.
-
 %prep
 %setup -q -c -T
 rpm2cpio %{SOURCE0} | cpio -i -d
 
 %install
 rm -rf $RPM_BUILD_ROOT
+install -d $RPM_BUILD_ROOT{/etc/{rc.d/init.d,vocal,sysconfig},%{_mandir}/man{1,5,8},%{vocaldir}/etc,%{_bindir},%{_sbindir}}
 
-%{__make} install \
-	DESTDIR=$RPM_BUILD_ROOT
+install usr/local/vocal/man/man1/*.1 $RPM_BUILD_ROOT%{_mandir}/man1
+install usr/local/vocal/man/man5/*.5 $RPM_BUILD_ROOT%{_mandir}/man5
+install usr/local/vocal/man/man8/*.8 $RPM_BUILD_ROOT%{_mandir}/man8
+install usr/local/vocal/bin/cdrserv $RPM_BUILD_ROOT%{_sbindir}
+install usr/local/vocal/bin/FileDataStoreWrapper $RPM_BUILD_ROOT%{_sbindir}
+install usr/local/vocal/bin/fs $RPM_BUILD_ROOT%{_sbindir}
+install usr/local/vocal/bin/ms $RPM_BUILD_ROOT%{_sbindir}
+install usr/local/vocal/bin/pserver $RPM_BUILD_ROOT%{_sbindir}
+install usr/local/vocal/bin/rs $RPM_BUILD_ROOT%{_sbindir}
+install usr/local/vocal/bin/gua $RPM_BUILD_ROOT%{_bindir}
+
+# remove trash first:
+rm usr/local/vocal/bin/{vocalstart,cdrserv,FileDataStoreWrapper,fs,ms,pserver,rs,gua}
+cp -rf usr/local/vocal/bin/* $RPM_BUILD_ROOT%{vocaldir}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
-%post   -p /sbin/ldconfig
-%postun -p /sbin/ldconfig
-
 %files
 %defattr(644,root,root,755)
-#%attr(755,root,root) %{_libdir}/lib*.so.*.*
-
-%files devel
-%defattr(644,root,root,755)
-#%doc AUTHORS BUGS ChangeLog NEWS README TODO
-#%attr(755,root,root) %{_libdir}/lib*.la
-#%attr(755,root,root) %{_libdir}/lib*.so
-#%{_includedir}/*
-
-%files static
-%defattr(644,root,root,755)
-#%{_libdir}/lib*.a
+%doc usr/share/doc/%{name}bin-%{version}/* usr/local/vocal/bin/sample-ua-config
+%attr(755,root,root) %{_sbindir}/*
+%attr(755,root,root) %{_bindir}/*
+%{vocaldir}/Tone/*
+%{vocaldir}/allinoneconfigure/*
+%{vocaldir}/voicemail/*
+%{vocaldir}/webpages/*
+%dir /etc/vocal
+%dir %{vocaldir}
+%dir %{vocaldir}/Tone
+%dir %{vocaldir}/allinoneconfigure
+%dir %{vocaldir}/etc
+%dir %{vocaldir}/provisioning
+%dir %{vocaldir}/voicemail
+%dir %{vocaldir}/webpages
+%{vocaldir}/*.cfg
+%{_mandir}/man1/*.1*
+%{_mandir}/man5/*.5*
+%{_mandir}/man8/*.8*
