@@ -14,6 +14,7 @@ URL:		http://www.vovida.org/
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	libstdc++-devel
+BuildRequires:	libstdc++-static
 BuildRequires:	libtool
 BuildRequires:	libxml-devel
 BuildRequires:	libxml2-devel
@@ -89,7 +90,7 @@ Statyczna wersja biblioteki Vocal.
 
 # This makes better package:
 #%{__make} CODE_OPTIMIZE=1 LDLIBS_LAST="-L%{_libdir}" all
-%{__make} LDLIBS_LAST="-L%{_libdir} -L/usr/X11R6/lib -lxml" all
+%{__make} CODE_OPTIMIZE=1 LDLIBS_LAST="-L%{_libdir} -L/usr/X11R6/lib" all
 
 %install
 rm -rf $RPM_BUILD_ROOT
