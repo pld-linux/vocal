@@ -6,7 +6,7 @@
 # - MIBy for SNMP
 # - rs requires many things
 Summary:	vocal - Vovida Open Communication Application Library
-Summary(pl):	vocal - otwarta biblioteka dla aplikacji komunikacyjnych
+Summary(pl.UTF-8):   vocal - otwarta biblioteka dla aplikacji komunikacyjnych
 Name:		vocal
 Version:	1.5.0
 Release:	0.3
@@ -36,14 +36,14 @@ and services. The software in VOCAL includes a SIP based Redirect
 Server, Feature Server, Provisioning Server and Marshal Proxy. This is
 the stable development branch of the VOCAL.
 
-%description -l pl
+%description -l pl.UTF-8
 Vovida Open Communication Application Library (VOCAL) to otwarty
-projekt ukierunkowany na u³atwienie adopcji VoIP na rynku. VOCAL
-udostêpnia spo³eczno¶ci programistów oprogramowanie i narzêdzia
-potrzebne do tworzenia nowych i ekscytuj±cych mo¿liwo¶ci VoIP,
-aplikacji i us³ug. Oprogramowanie z projektu VOCAL zawiera oparty na
+projekt ukierunkowany na uÅ‚atwienie adopcji VoIP na rynku. VOCAL
+udostÄ™pnia spoÅ‚ecznoÅ›ci programistÃ³w oprogramowanie i narzÄ™dzia
+potrzebne do tworzenia nowych i ekscytujÄ…cych moÅ¼liwoÅ›ci VoIP,
+aplikacji i usÅ‚ug. Oprogramowanie z projektu VOCAL zawiera oparty na
 SIP Redirect Server, Feature Server, Provisioning Server i Marshall
-Proxy. Jest to stabilne rozwijaj±ce siê odga³êzienie projektu.
+Proxy. Jest to stabilne rozwijajÄ…ce siÄ™ odgaÅ‚Ä™zienie projektu.
 
 %package siph323csgw
 Summary:	SIP-H.323 Call Signaling Gateway
@@ -52,29 +52,29 @@ Group:		Networking
 %description siph323csgw
 SIP-H.323 Call Signaling Gateway.
 
-%description siph323csgw -l pl
+%description siph323csgw -l pl.UTF-8
 Bramka sygnalizacyjna SIP-H.323.
 
 %package cdrserv
 Summary:	CDR server
-Summary(pl):	CDR server
+Summary(pl.UTF-8):   CDR server
 Group:		Networking
 
 %description cdrserv
 CDR server.
 
-%description cdrserv -l pl
+%description cdrserv -l pl.UTF-8
 CDR server.
 
 %package heartbeat
 Summary:	Heartbeat server
-Summary(pl):	Heartbeat server
+Summary(pl.UTF-8):   Heartbeat server
 Group:		Networking
 
 %description heartbeat
 Heartbeat server.
 
-%description heartbeat -l pl
+%description heartbeat -l pl.UTF-8
 Heartbeat server.
 
 %prep
