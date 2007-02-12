@@ -6,7 +6,7 @@
 # - MIBy for SNMP
 # - rs requires many things
 Summary:	vocal - Vovida Open Communication Application Library
-Summary(pl.UTF-8):   vocal - otwarta biblioteka dla aplikacji komunikacyjnych
+Summary(pl.UTF-8):	vocal - otwarta biblioteka dla aplikacji komunikacyjnych
 Name:		vocal
 Version:	1.5.0
 Release:	0.3
@@ -57,7 +57,7 @@ Bramka sygnalizacyjna SIP-H.323.
 
 %package cdrserv
 Summary:	CDR server
-Summary(pl.UTF-8):   CDR server
+Summary(pl.UTF-8):	CDR server
 Group:		Networking
 
 %description cdrserv
@@ -68,7 +68,7 @@ CDR server.
 
 %package heartbeat
 Summary:	Heartbeat server
-Summary(pl.UTF-8):   Heartbeat server
+Summary(pl.UTF-8):	Heartbeat server
 Group:		Networking
 
 %description heartbeat
