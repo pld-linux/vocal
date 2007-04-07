@@ -3,7 +3,7 @@
 # - init scripts for every service
 # - make install - should be working, but does not...
 # - fs requires cpl files (?)
-# - MIBy for SNMP
+# - MIBs for SNMP
 # - rs requires many things
 Summary:	vocal - Vovida Open Communication Application Library
 Summary(pl.UTF-8):	vocal - otwarta biblioteka dla aplikacji komunikacyjnych
@@ -47,6 +47,7 @@ Proxy. Jest to stabilne rozwijające się odgałęzienie projektu.
 
 %package siph323csgw
 Summary:	SIP-H.323 Call Signaling Gateway
+Summary(pl.UTF-8):	Bramka sygnalizacyjna SIP-H.323
 Group:		Networking
 
 %description siph323csgw
@@ -57,25 +58,25 @@ Bramka sygnalizacyjna SIP-H.323.
 
 %package cdrserv
 Summary:	CDR server
-Summary(pl.UTF-8):	CDR server
+Summary(pl.UTF-8):	Serwer CDR
 Group:		Networking
 
 %description cdrserv
 CDR server.
 
 %description cdrserv -l pl.UTF-8
-CDR server.
+Serwer CDR.
 
 %package heartbeat
 Summary:	Heartbeat server
-Summary(pl.UTF-8):	Heartbeat server
+Summary(pl.UTF-8):	Serwer Heartbeat
 Group:		Networking
 
 %description heartbeat
 Heartbeat server.
 
 %description heartbeat -l pl.UTF-8
-Heartbeat server.
+Serwer Heartbeat.
 
 %prep
 %setup -q -n %{name}
@@ -98,11 +99,15 @@ Heartbeat server.
 
 # This makes better package:
 #%{__make} CODE_OPTIMIZE=1 LDLIBS_LAST="-L%{_libdir}" all
-%{__make} %{!?debug:CODE_OPTIMIZE=1} LDLIBS_LAST="-L%{_libdir} -L/usr/X11R6/lib -lxml -lsndfile" all
+%{__make} all \
+	%{!?debug:CODE_OPTIMIZE=1} \
+	LDLIBS_LAST="-lxml -lsndfile"
 # SIP-H.323 Call Signaling Gateway
-%{__make} %{!?debug:CODE_OPTIMIZE=1} siph323csgw
+%{__make} siph323csgw \
+	%{!?debug:CODE_OPTIMIZE=1}
 # Provisioning Server
-%{__make} %{!?debug:CODE_OPTIMIZE=1} ps
+%{__make} ps \
+	%{!?debug:CODE_OPTIMIZE=1}
 
 %install
 rm -rf $RPM_BUILD_ROOT
